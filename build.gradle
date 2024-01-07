@@ -8,31 +8,10 @@ base.archivesName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
 
-repositories {}
-
-loom {
-	// Only needed for versions not available from vanilla launcher by default.
-	// customMinecraftManifest.set("https://meta.legacyfabric.net/v2/manifest/${minecraft_version}")
-
-	// Required by 1.7.x
-	// runs {
-	// 	client {
-	// 		programArgs "--userProperties", "{}"
-	// 	}
-	// }
-}
-
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings(legacy.yarn(project.minecraft_version, project.yarn_build))
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-
-	// Fabric API provides hooks for events, item registration, and more. As most mods will need this, it's included by default.
-	// If you know for a fact you don't, it's not required and can be safely removed.
-	modImplementation "net.legacyfabric.legacy-fabric-api:legacy-fabric-api:${project.fabric_version}"
-
-	// You can retrieve a specific api module using this notation.
-	// modImplementation(legacy.apiModule("legacy-fabric-item-groups-v1", project.fabric_version))
 }
 
 processResources {
